@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#파일이 저장되는 경로의 절대경로의 부모의 부모 경로 즉 -> 프로젝트 최상단 폴더로 경로 저장
 
 
 # Quick-start development settings - unsuitable for production
@@ -120,3 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT=''
+
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media') #업로드 되는 파일을 저장하는 경로 지정/ 최상단 폴더 밑에 media 라는 폴더
