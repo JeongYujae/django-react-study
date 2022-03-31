@@ -123,5 +123,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # STATIC_ROOT=''
 
-MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR, 'media') #업로드 되는 파일을 저장하는 경로 지정/ 최상단 폴더 밑에 media 라는 폴더
+MEDIA_URL='/media/' #파일에 대한 url 접근시에 사용됨
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media') #업로드 되는 파일을 저장하는 경로 지정/ 최상단 폴더 밑에 media 라는 폴더에 저장하겠다는거임
+
