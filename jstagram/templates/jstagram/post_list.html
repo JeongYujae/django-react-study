@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jstagram/ Post list</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> {% comment %} 부트스트랩 {% endcomment %}
+    </head>
+    <body>
+        {% comment %} input에 받은 내용을 action의 주소에 'get' 방식으로 전달한다 {% endcomment %}
+        <form action="" method="get">
+            <input type="text" name="q" />
+            <input type="submit" value="검색" />
+        <table class="table table-bordered table-hover">
+            <tbody >
+                {% for post in post_list%}
+                    <tr>
+                        <td>
+                            {% if post.photo %}
+                                <img src="{{post.photo.url}}" style="width:100px" />
+                            {% else %}
+                                No Photo
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{post.message}}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

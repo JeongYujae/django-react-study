@@ -20,3 +20,7 @@ class Post(models.Model):
     def __str__(self):
         # return f" Custom Post object ({self.id})"
         return self.message
+    
+
+    class Meta:
+        ordering=['-id']
