@@ -21,9 +21,11 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    # path('api/v1', include(api_v1_patterns)), #임의로 생성도 가능
     path('admin/', admin.site.urls),
     path('blog_example/', include('blog_example.urls')),
-    path('jstagram/', include('jstagram.urls'))
+    path('jstagram/', include('jstagram.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
 
 
