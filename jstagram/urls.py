@@ -1,7 +1,10 @@
+from unicodedata import name
 from django.urls import path, register_converter
 # from django.urls import re_path #1,2 모두 같은 방식이지만 2가지 다 알아둘것/ 정규표현식 ver.
 
 from . import views
+ 
+app_name='jstagram' #url reverse에서 namespace 역할을 하게 됨
 
 
 #정규표현식으로 4자리수 바꾸기 class
@@ -19,7 +22,7 @@ register_converter(YearConverter, 'year')
 
 
 urlpatterns=[
-    path('',views.post_list),
+    path('',views.post_list, name='post_list'),
     path('<int:pk>/', views.post_detail), #int형이 오면 pk로 바꿔서post_deatail 함수 호출
     path('archives/<year:year>/', views.archives_year),
                    #컨버터 이름, 인자

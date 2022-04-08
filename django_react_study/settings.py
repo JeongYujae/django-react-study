@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #third apps
+    'bootstrap4',
     'django_extensions',
     'debug_toolbar',
     #local apps
@@ -64,7 +65,10 @@ ROOT_URLCONF = 'django_react_study.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ #app관련 설정 넣는 공간(File System Template Loader) 
+            os.path.join(BASE_DIR, 'django_react_study', 'templates') #경로 지정 
+            
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

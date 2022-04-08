@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path, include 
 from django.conf import settings #settings import는 이렇게
 from django.conf.urls.static import static
+from django.views.generic import TemplateView, RedirectView
 
 
 urlpatterns = [
     # path('api/v1', include(api_v1_patterns)), #임의로 생성도 가능
+    # path('',TemplateView.as_view(template_name='root.html'), name='root'), #메인 페이지 
+    path('',RedirectView.as_view(url='/jstagram/'), name='root'), #위와 같은 코드/ 메인 페이지 접속하면 바로 jstagram으로 이동  
     path('admin/', admin.site.urls),
     path('blog_example/', include('blog_example.urls')),
     path('jstagram/', include('jstagram.urls')),

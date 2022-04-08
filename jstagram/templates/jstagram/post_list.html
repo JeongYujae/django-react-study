@@ -1,7 +1,8 @@
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8">  
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Jstagram/ Post list</title>
@@ -30,5 +31,10 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        {% if is_paginated %}
+            {% bootstrap_pagination page_obj%} 
+            <!-- size="large" justify_content= "center"  -->
+        {% endif %}
     </body>
 </html>
