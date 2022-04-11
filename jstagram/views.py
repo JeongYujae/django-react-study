@@ -1,8 +1,6 @@
-from pyexpat import model
-from unicodedata import name
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, ArchiveIndexView, YearArchiveView
 from .models import Post
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -62,6 +60,11 @@ class PostDetailView(DetailView):
         return qs
 
 
-def archives_year(request, year):
-    return HttpResponse(f"{year}년 archives") #html에 보여지는 text
-    
+# def archives_year(request, year):
+#     return HttpResponse(f"{year}년 archives") #html에 보여지는 text
+
+#archives view를 통해 위의 함수 대체 가능. -> urls에 있는 path도 같이 손봐줘야 하는 구조
+
+post_archive=ArchiveIndexView.as_view(model=Post, date_field='created_at')
+
+post_archive_year=YearArchiveView.as_view(model=Post, date_field='created_at', make_object_list=True)

@@ -18,14 +18,28 @@ class YearConverter:
     def to_url(self, value):
         return "%04d" % value
 
+class MonthConverter(YearConverter): #Year Converter를 상속받기
+    regex=r"d{1,2}"
+
+class DayConverter(YearConverter): #Year Converter를 상속받기
+    regex=r"[0123]\d"
+
 register_converter(YearConverter, 'year')
+register_converter(MonthConverter, 'month')
+register_converter(DayConverter, 'day')
+
+
 
 
 urlpatterns=[
     path('',views.post_list, name='post_list'),
-    path('<int:pk>/', views.post_detail), #int형이 오면 pk로 바꿔서post_deatail 함수 호출
-    path('archives/<year:year>/', views.archives_year),
-                   #컨버터 이름, 인자
+    path('<int:pk>/', views.post_detail, name='post_detail'), #int형이 오면 pk로 바꿔서post_deatail 함수 호출
+    # path('archives/<year:year>/', views.archives_year),
+    #                #컨버터 이름, 인자
     # re_path(r'archives/(?P<year>\d+)/', views.archives_year),
+
+    path('archive/',views.post_archive, name='post_archive'),
+    path('archive/<year:year>/', views.post_archive_year, name='post_year_archive')
+
     
 ]
