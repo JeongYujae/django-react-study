@@ -1,9 +1,10 @@
 from django.http import HttpResponse, Http404
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import ListView, DetailView, ArchiveIndexView, YearArchiveView
 from .models import Post
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from .forms import PostForm
 # Create your views here.
 
 
@@ -58,6 +59,20 @@ class PostDetailView(DetailView):
         if not self.request.user.is_authenticated:
             qs=qs.filter(is_public=True)
         return qs
+
+
+def post_new(request):
+    if request.method=='POST':
+        form=PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post=form.save()
+            return redirect(post)
+    else:
+        form=PostForm() 
+
+    return render(request, 'jstagram/post_form.html',{
+        'form':form,
+    })
 
 
 # def archives_year(request, year):

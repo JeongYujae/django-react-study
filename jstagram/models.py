@@ -1,7 +1,7 @@
-from unicodedata import name
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
+from django.core.validators import MinLengthValidator
 
 
 # Create your models here.
@@ -12,7 +12,10 @@ from django.urls import reverse
 
 class Post(models.Model):
     author=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    message=models.TextField()
+    message=models.TextField(
+        validators=[MinLengthValidator(10)]
+        #최소 10글자 입력
+    )
     photo=models.ImageField(blank=True, upload_to='jstagram/post/%Y/%m/%d') #db에 photo를 만듦/ upload_to에 문자열, 함수 가능
     is_public=models.BooleanField(default=False, verbose_name='공개 여부')
     created_at=models.DateTimeField(auto_now_add=True) #자동으로 입력되는 부분 auton_now

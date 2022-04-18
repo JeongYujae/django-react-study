@@ -1,44 +1,48 @@
+{% extends 'jstagram/layout.html' %}
 {% load bootstrap4 %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">  
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jstagram/ Post list</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> {% comment %} 부트스트랩 {% endcomment %}
-    </head>
-    <body>
-        {% comment %} input에 받은 내용을 action의 주소에 'get' 방식으로 전달한다 {% endcomment %}
-        <form action="" method="get">
-            <input type="text" name="q" />
-            <input type="submit" value="검색" />
-        <table class="table table-bordered table-hover">
-            <tbody >
-                {% for post in post_list%}
-                    <tr>
-                        <td>
-                            {% if post.photo %}
-                                <img src="{{post.photo.url}}" style="width:100px" />
-                            {% else %}
-                                No Photo
-                            {% endif %}
-                        </td>
-                        <td>
-                            <!-- <a href= "{% url 'jstagram:post_detail' post.pk %}"> -->
-                            <!-- 링크 사용하는 부분 url reverse 사용 -->
-                            <a href="{{post.get_absolute_url}}">
-                                {{post.message}}
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
 
-        {% if is_paginated %}
-            {% bootstrap_pagination page_obj%} 
-            <!-- size="large" justify_content= "center"  -->
-        {% endif %}
-    </body>
-</html>
+
+{% block title %}
+    Jstagram/ Post list
+{% endblock title %}
+
+
+{% block content %}
+<!-- 바디의 내용을 붙여넣어줌 -->
+<!-- input에 받은 내용을 action의 주소에 'get' 방식으로 전달한다  -->
+<form action="" method="get">
+    <input type="text" name="q" />
+    <input type="submit" value="검색" />
+</form>
+
+<a href="{% url 'jstagram:post_new' %}" class="btn btn-block" mt-3 mb-3>New post</a>
+<!-- mt-> margin top -->
+<table class="table table-bordered table-hover">
+    <tbody >
+        {% for post in post_list%}
+            <tr>
+                <td>
+                    {% if post.photo %}
+                        <img src="{{post.photo.url}}" style="width:100px" />
+                    {% else %}
+                        No Photo
+                    {% endif %}
+                </td>
+                <td>
+                    <!-- <a href= "{% url 'jstagram:post_detail' post.pk %}"> -->
+                    <!-- 링크 사용하는 부분 url reverse 사용 -->
+                    <a href="{{post.get_absolute_url}}">
+                        {{post.message}}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if is_paginated %}
+    {% bootstrap_pagination page_obj%} 
+    <!-- size="large" justify_content= "center"  -->
+{% endif %}
+{% endblock content %}
+

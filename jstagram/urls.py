@@ -32,6 +32,7 @@ register_converter(DayConverter, 'day')
 
 
 urlpatterns=[
+    path('new/', views.post_new, name='post_new'),
     path('',views.post_list, name='post_list'),
     path('<int:pk>/', views.post_detail, name='post_detail'), #int형이 오면 pk로 바꿔서post_deatail 함수 호출
     # path('archives/<year:year>/', views.archives_year),
