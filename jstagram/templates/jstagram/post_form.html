@@ -1,8 +1,31 @@
-<form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-    {{form}}
-    </table>
-    <!-- form 태그는 table로 감싸줘야함 -->
-    <input type="submit" value="저장"/>
-</form>
+{% extends 'jstagram/layout.html' %}
+{% load bootstrap4 %}
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        <!-- {% bootstrap_messages %} -->
+
+              {% buttons %}
+                <button class="btn btn-primary">
+                  저장
+                </button>
+              {% endbuttons %}
+
+
+        <!-- <table>
+            {{form}}
+        </table> -->
+        <!-- form 태그는 table로 감싸줘야함 -->
+    </form>
+    <hr/>
+
+    {% if post %}
+        <a href="{{post.get_absolute_url}}" class="btn btn-secondary">
+            내용으로
+        </a>
+    {% endif %}
+    <a href="{% url 'jstagram:post_list' %}" class="btn btn-primary">목록</a>
+
+{% endblock %}

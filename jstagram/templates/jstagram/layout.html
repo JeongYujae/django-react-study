@@ -1,5 +1,5 @@
 <!-- 각각의 디자인 파일들을 각각의 html 파일에 적용시키 보다는 상속 기능을 활용 -->
-{% load static %}
+{% load bootstrap4 static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -52,9 +52,20 @@
             padding-top: 2rem;
         }
     </style>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
+                
+              <!-- {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">       
+                {{message.message}}
+              </div>
+              
+              {% endfor %} -->
+
+
                 {% block content %}
                 {% endblock content %}
             </div>

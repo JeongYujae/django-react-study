@@ -153,3 +153,8 @@ MEDIA_ROOT=os.path.join(BASE_DIR, 'media') #업로드 되는 파일을 저장하
 INTERNAL_IPS=['127.0.0.1'] #debug toolbar 추가하는 과정(공식문서로 확인 가능)
 
 
+from django.contrib.messages import constants as messages_content
+
+MESSAGE_TAGS={messages_content.DEBUG:'secondary', messages_content.ERROR: 'danger'}
+#html 마크업시 워딩 매칭이 안되서 편하게 쓰기 위해서 매핑해주는 모습
+
