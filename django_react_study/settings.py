@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #파일이 저장되는 경로의 절대경로의 부모의 부모 경로 즉 -> 프로젝트 최상단 폴더로 경로 저장
@@ -158,3 +160,4 @@ from django.contrib.messages import constants as messages_content
 MESSAGE_TAGS={messages_content.DEBUG:'secondary', messages_content.ERROR: 'danger'}
 #html 마크업시 워딩 매칭이 안되서 편하게 쓰기 위해서 매핑해주는 모습
 
+LOGOUT_REDIRECT_URL=reverse_lazy('login')
