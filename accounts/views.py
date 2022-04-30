@@ -77,9 +77,5 @@ signup=SignupView.as_view()
 #     template_name='accounts/signup_form.html',
 
 # )
-def logout(request):
-    pass
 
-# def signup(request):
-#     pass
 

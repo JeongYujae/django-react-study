@@ -8,7 +8,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display=['id','photo_tag','message','message_length','is_public','created_at','updated_at'] #필드 이름은 pk
     list_display_links=['message'] #인자, 함수도 가능
     list_filter=['created_at', 'is_public']
-    search_fields=['message'] #검색창 만들기
+    search_fields=['message'] #검색창 만들기x
 
     def message_length(self,post):
         return len(post.message)

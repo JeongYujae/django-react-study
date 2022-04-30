@@ -1,4 +1,3 @@
-from email import message
 from django import forms
 from .models import Post
 
